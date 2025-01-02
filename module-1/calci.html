@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>My Calculator Project</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+.calculator{
+
+    border: 2px solid black;
+    padding: 15px;
+    background: #31495ddc;
+    box-shadow: 0px 5px 5px black;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input{
+      padding: 20px;
+      margin: 10px;
+      background-color: hsla(207, 11%, 33%, 0.863);
+      box-shadow: 0px 0px 10px #828080;
+      color:aliceblue;
+      font-size: 20px;
+      width: 100%;
+      
+}
+
+button{
+    height: 30px;
+    width: 40px;
+    margin: 5px;
+    background-color: rgb(20, 20, 20);
+    color: whitesmoke;
+    box-shadow: 0px 0px 10px  #828080;
+    cursor: pointer;
+    padding: 10px 5px;
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    input {
+        font-size: 14px;
+        width: 100%; 
+    }
+    button {
+        height: 30px;
+        width: 25%;  
+    }
+    .calculator {
+        padding: 10px;
+        box-shadow: 0px 2px 2px black;
+    }
+    body{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    input {
+        font-size: 12px;
+    }
+    button {
+        
+        width: 30%;
+    }
+    body {
+        font-size: 14px; 
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="input" readonly>
+        <div>
+            <button onClick="clearInput()">AC</button>
+            
+            <button onClick="Todisplay('/')">/</button>
+        </div>
+        <div>
+            <button onClick="Todisplay('7')">7</button>
+            <button onClick="Todisplay('8')">8</button>
+            <button onClick="Todisplay('9')">9</button>
+            <button onClick="Todisplay('*')">x</button>
+        </div>
+        <div>
+            <button onClick="Todisplay('4')">4</button>
+            <button onClick="Todisplay('5')">5</button>
+            <button onClick="Todisplay('6')">6</button>
+            <button onClick="Todisplay('-')">-</button>
+        </div>
+        <div>
+            <button onClick="Todisplay('1')">1</button>
+            <button onClick="Todisplay('2')">2</button>
+            <button onClick="Todisplay('3')">3</button>
+            <button onClick="Todisplay('+')">+</button>
+        </div>
+        <div>
+            <button onClick="Todisplay('00')">00</button>
+            <button onClick="Todisplay('0')">0</button>
+            <button onClick="Todisplay('.')">.</button>
+            <button onClick="equate()">=</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById("input");
+
+
+function Todisplay(input) {
+    display.value += input;
+}
+
+
+function equate() {
+    try {
+        
+        display.value = new Function(`return ${display.value}`)();
+    } catch (error) {
+        display.value = "Error";
+    }
+}
+
+
+function clearInput() {
+    display.value = "";
+}
+    </script>
+</body>
+</html>
